@@ -1,16 +1,16 @@
 {
 	"trains": [
 		{
-			"name": "Hogwarts Express",
+			"name": "Thalys",
 			"stops": [
 				{
-					"station": "Sycamore",
+					"station": "Amsterdam",
 					"status": "ON-TIME",
 					"arrival": "12:00pm",
 					"departure": "12:10pm"
 				},
 				{
-					"station": "Pine",
+					"station": "Parijs",
 					"status": "ON-TIME",
 					"arrival": "1:00pm",
 					"departure": "1:10pm"
@@ -18,16 +18,16 @@
 			]
 		},
 		{
-			"name": "Flying Scotsman",
+			"name": "Vliegende Hollander",
 			"stops": [
 				{
-					"station": "Pine",
+					"station": "Kaatsheuvel",
 					"status": "ON-TIME",
 					"arrival": "12:00pm",
 					"departure": "12:10pm"
 				},
 				{
-					"station": "Sycamore",
+					"station": "Kaapstad",
 					"status": "DELAYED",
 					"arrival": "1:00pm",
 					"departure": "1:10pm",
@@ -37,16 +37,16 @@
 			]
 		},
 		{
-			"name": "Orient Express",
+			"name": "Intercity Direct",
 			"stops": [
 				{
-					"station": "Sycamore",
+					"station": "Haarlem",
 					"status": "ON-TIME",
 					"arrival": "12:00pm",
 					"departure": "12:10pm"
 				},
 				{
-					"station": "Cypress",
+					"station": "Bergen op Zoom",
 					"status": "DELAYED",
 					"arrival": "1:00pm",
 					"departure": "1:10pm",
@@ -56,24 +56,24 @@
 			]
 		},
 		{
-			"name": "Golden Arrow",
+			"name": "Transsib",
 			"stops": [
 				{
-					"station": "Cypress",
+					"station": "Moskou",
 					"status": "ON-TIME",
 					"arrival": "12:00pm",
 					"departure": "12:10pm"
 				},
 				{
-					"station": "Pine",
-					"status": "DELAYED",
+					"station": "Wuhan",
+					"status": "CANCELLED",
 					"arrival": "1:00pm",
 					"departure": "1:10pm",
-					"delayedArrival": "1:07pm",
-					"delayedDeparture": "1:17pm"
+					"delayedArrival": "9:07pm",
+					"delayedDeparture": "9:17pm"
 				},
 				{
-					"station": "Hickory",
+					"station": "Vladivostok",
 					"status": "DELAYED",
 					"arrival": "1:00pm",
 					"departure": "1:10pm",
