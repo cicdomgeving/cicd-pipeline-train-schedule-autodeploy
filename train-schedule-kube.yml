@@ -1,9 +1,9 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: trainNamespace
+  name: train-ns
   labels:
-    name: trainNamespace
+    name: train-ns
 
 ---
 
@@ -27,7 +27,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: train-schedule-deployment
-  namespace: trainNamespace
+  namespace: train-ns
   labels:
     app: train-schedule
 spec:
