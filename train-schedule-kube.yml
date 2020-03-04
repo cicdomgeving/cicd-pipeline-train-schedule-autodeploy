@@ -15,7 +15,7 @@ metadata:
 spec:
   type: LoadBalancer
   externalIPs:
-  - 172.16.240.160
+  - 172.16.240.161
   selector:
     app: train-schedule
   ports:
