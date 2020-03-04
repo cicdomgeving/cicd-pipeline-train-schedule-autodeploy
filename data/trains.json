@@ -1,0 +1,86 @@
+{
+	"trains": [
+		{
+			"name": "Thalys",
+			"stops": [
+				{
+					"station": "Amsterdam",
+					"status": "ON-TIME",
+					"arrival": "12:00pm",
+					"departure": "12:10pm"
+				},
+				{
+					"station": "Parijs",
+					"status": "ON-TIME",
+					"arrival": "1:00pm",
+					"departure": "1:10pm"
+				}
+			]
+		},
+		{
+			"name": "Vliegende Hollander",
+			"stops": [
+				{
+					"station": "Kaatsheuvel",
+					"status": "ON-TIME",
+					"arrival": "12:00pm",
+					"departure": "12:10pm"
+				},
+				{
+					"station": "Kaapstad",
+					"status": "DELAYED",
+					"arrival": "1:00pm",
+					"departure": "1:10pm",
+					"delayedArrival": "1:00pm",
+					"delayedDeparture": "1:17pm"
+				}
+			]
+		},
+		{
+			"name": "Intercity Direct",
+			"stops": [
+				{
+					"station": "Haarlem",
+					"status": "ON-TIME",
+					"arrival": "12:00pm",
+					"departure": "12:10pm"
+				},
+				{
+					"station": "Bergen op Zoom",
+					"status": "DELAYED",
+					"arrival": "1:00pm",
+					"departure": "1:10pm",
+					"delayedArrival": "1:07pm",
+					"delayedDeparture": "1:17pm"
+				}
+			]
+		},
+		{
+			"name": "Transsib",
+			"stops": [
+				{
+					"station": "Moskou",
+					"status": "ON-TIME",
+					"arrival": "12:00pm",
+					"departure": "12:10pm"
+				},
+				{
+					"station": "Wuhan",
+					"status": "CANCELLED",
+					"arrival": "1:00pm",
+					"departure": "1:10pm",
+					"delayedArrival": "9:07pm",
+					"delayedDeparture": "9:17pm"
+				},
+				{
+					"station": "Vladivostok",
+					"status": "DELAYED",
+					"arrival": "1:00pm",
+					"departure": "1:10pm",
+					"delayedArrival": "1:07pm",
+					"delayedDeparture": "1:17pm"
+				}
+			]
+		}
+	]
+}
