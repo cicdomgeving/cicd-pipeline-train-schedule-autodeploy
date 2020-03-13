@@ -13,14 +13,13 @@ metadata:
   name: train-schedule-service
   namespace: train-ns
 spec:
-  type: LoadBalancer
-  externalIPs:
-  - 172.16.240.161
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 40000
   selector:
     app: train-schedule
-  ports:
-  - protocol: TCP
-    port: 8080
 
 ---
 
