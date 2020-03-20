@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: train-schedule-service
-  namespace: train-ns
+  namespace: flight-ns
 spec:
   type: NodePort
   ports:
