@@ -1,3 +1,4 @@
 node_modules
 .gradle
 dist
+train-schedule-kube.yml
