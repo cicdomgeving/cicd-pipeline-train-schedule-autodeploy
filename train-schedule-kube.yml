@@ -65,18 +65,42 @@ spec:
       protocol: TCP
   externalIPs:
     - 172.16.240.161
+  selector:
+    run: ssh
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ssh
+  name: ssh-deployment
   namespace: train-ns
+  labels:
+    run: ssh
 spec:
-  containers:
-    - name: sshcheck
-      image: mauritscasper/ubuntu-ssh:part1
-      imagePullPolicy: Never
-      ports:
-       - containerPort: 22
+  replicas: 1
+  selector:
+    matchLabels:
+      run: ssh
+      track: stable
+  template:
+    metadata:
+      labels:
+        run: ssh
+        track: stable
+    spec:
+      containers:
+      - name: ssh
+        image: mauritscasper/ubuntu-ssh:part1
+        ports:
+        - containerPort: 22
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 22
+          initialDelaySeconds: 15
+          timeoutSeconds: 1
+          periodSeconds: 10
+        resources:
+          requests:
+            cpu: 200m
