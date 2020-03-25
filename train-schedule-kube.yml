@@ -92,13 +92,3 @@ spec:
         image: mauritscasper/ubuntu-ssh:part1
         ports:
         - containerPort: 22
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 22
-          initialDelaySeconds: 15
-          timeoutSeconds: 1
-          periodSeconds: 10
-        resources:
-          requests:
-            cpu: 200m
