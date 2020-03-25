@@ -48,39 +48,3 @@ spec:
         resources:
           requests:
             cpu: 200m
-
----
-
-apiVersion: v1
-kind: Deployment
-metadata:
- name: ssh
- namespace: train-ns
- labels:
-  run: ssh
-spec:
- containers:
- - name: sshcheck
-   image: mauritscasper/ubuntu-ssh:part1
-   imagePullPolicy: Never
-   ports:
-    - containerPort: 22
- restartPolicy: Never
----
-apiVersion: apps/v1
-kind: Service
-metadata:
- name: ssh
- namespace: train-ns
- labels:
-  run: ssh
-spec:
- externalIPs:
-  - 172.16.240.161
- type: NodePort
- ports:
- - port: 2022
-   targetPort: 22
-   protocol: TCP
- selector:
-  run: ssh
