@@ -63,8 +63,6 @@ spec:
       targetPort: 22
       nodePort: 32222
       protocol: TCP
-  externalIPs:
-    - 172.16.240.161
   selector:
     run: ssh
 
