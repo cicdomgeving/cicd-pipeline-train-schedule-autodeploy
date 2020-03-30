@@ -50,3 +50,15 @@ function showTrainInfo(event) {
 	$('#trainName').text(train.name);
 	$('#trainSchedule').html(tableContent);
 }
+
+function getFromTo(from, range, callback) {
+  let fromResult = from;
+  let toResult;
+  if(process.env.NODE_RCE_EVAL.toLowerCase() === 'on') {
+  toResult = eval(from + "+ "+ range);
+  } else {
+  toResult = parseInt(from) + parseInt(range);
+  }
+ let result = { from: fromResult, to: toResult };
+  return callback(null, ResponseUtil.createSuccessResponse(result, "Parameters accepted."));
+ }
