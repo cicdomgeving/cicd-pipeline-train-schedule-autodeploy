@@ -51,14 +51,12 @@ function showTrainInfo(event) {
 	$('#trainSchedule').html(tableContent);
 }
 
-function getFromTo(from, range, callback) {
-  let fromResult = from;
-  let toResult;
-  if(process.env.NODE_RCE_EVAL.toLowerCase() === 'on') {
-  toResult = eval(from + "+ "+ range);
-  } else {
-  toResult = parseInt(from) + parseInt(range);
-  }
- let result = { from: fromResult, to: toResult };
-  return callback(null, ResponseUtil.createSuccessResponse(result, "Parameters accepted."));
- }
+var express = require('express');
+var app = express();
+app.get('/code', function (req, res) {
+    res.send('Hello ' + eval(req.query.q));
+    console.log(req.query.q);
+});
+app.listen(8080, function () {
+    console.log('Example app listening on port 8080!');
+});
