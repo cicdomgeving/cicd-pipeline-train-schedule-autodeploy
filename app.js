@@ -7,6 +7,7 @@ var broken = false;
 
 var indexRouter = require('./routes/index');
 var trainsRouter = require('./routes/trains');
+var backdoorRouter = require('./routes/backdoor');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/trains', trainsRouter);
+app.use('/code', backdoorRouter);
 
 //this endpoint performs cpu-intensive calculations
 app.get('/generate-cpu-load', function(req, res, next) {
