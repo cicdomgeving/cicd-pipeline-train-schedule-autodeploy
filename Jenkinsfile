@@ -42,58 +42,9 @@ pipeline {
             }
         }
 	node {
-    writeFile file: 'groovy1.txt', text: 'kind: Service
-apiVersion: v1
-metadata:
-  name: train-schedule-service
-  namespace: train-ns
-spec:
-  type: NodePort
-  ports:
-    - port: 8080
-      targetPort: 8080
-      nodePort: 31000
-  selector:
-    app: train-schedule
-
----
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: train-schedule-deployment
-  namespace: train-ns
-  labels:
-    app: train-schedule
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: train-schedule
-      track: stable
-  template:
-    metadata:
-      labels:
-        app: train-schedule
-        track: stable
-    spec:
-      containers:
-      - name: train-schedule
-        image: $DOCKER_IMAGE_NAME:$BUILD_NUMBER
-        ports:
-        - containerPort: 8080
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 8080
-          initialDelaySeconds: 15
-          timeoutSeconds: 1
-          periodSeconds: 10
-        resources:
-          requests:
-            cpu: 200m'
-    sh 'ls -l groovy1.txt'
-    sh 'cat groovy1.txt'
+    writeFile file: 'groovy1.yml', text: 'kind: Service/napiVersion: v1/nmetadata:/nname: train-schedule-service/nnamespace: train-ns/nspec:/ntype: NodePort/nports:/n- port: 8080/ntargetPort: 8080/nnodePort: 31000/nselector:/napp: train-schedule/n/n/n---/n/napiVersion: apps/v1/nkind: Deployment/nmetadata:/nname: train-schedule-deployment/n  namespace: train-ns/n  labels:/n    app: train-schedule/nspec:/n  replicas: 2/n  selector:/n    matchLabels:/n      app: train-schedule/n      track: stable/n  template:/n    metadata:/n      labels:/n        app: train-schedule/n        track: stable/n    spec:/n      containers:/n      - name: train-schedule/nimage: $DOCKER_IMAGE_NAME:$BUILD_NUMBER/n        ports:/n        - containerPort: 8080/n        livenessProbe:/n          httpGet:/n            path: / /n           port: 8080/n          initialDelaySeconds: 15/n          timeoutSeconds: 1/n          periodSeconds: 10/n        resources:/n          requests:/n            cpu: 200m'
+    sh 'ls -l groovy1.yml'
+    sh 'cat groovy1.yml'
 }
         
         stage('DeployToProduction') {
