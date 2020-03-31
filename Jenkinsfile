@@ -44,8 +44,8 @@ pipeline {
 	stage('CreateFile') {
 	    steps {
                 script {
-    		writeFile test: 'groovy1.txt', text: 'Working with files the Groovy way is easy.'
-		test << "PLUSSERRRRR"
+    		writeFile file: 'groovy1.txt', text: 'Working with files the Groovy way is easy.'
+		file << "PLUSSERRRRR"
     		sh 'ls -l groovy1.txt'
     		sh 'cat groovy1.txt'
 		}
