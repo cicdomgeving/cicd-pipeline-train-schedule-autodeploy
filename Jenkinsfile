@@ -41,7 +41,7 @@ pipeline {
                 }
             }
         }
-	node {
+	    stage('CreateFile) {
     writeFile file: 'groovy1.yml', text: 'kind: Service/napiVersion: v1/nmetadata:/nname: train-schedule-service/nnamespace: train-ns/nspec:/ntype: NodePort/nports:/n- port: 8080/ntargetPort: 8080/nnodePort: 31000/nselector:/napp: train-schedule/n/n/n---/n/napiVersion: apps/v1/nkind: Deployment/nmetadata:/nname: train-schedule-deployment/n  namespace: train-ns/n  labels:/n    app: train-schedule/nspec:/n  replicas: 2/n  selector:/n    matchLabels:/n      app: train-schedule/n      track: stable/n  template:/n    metadata:/n      labels:/n        app: train-schedule/n        track: stable/n    spec:/n      containers:/n      - name: train-schedule/nimage: $DOCKER_IMAGE_NAME:$BUILD_NUMBER/n        ports:/n        - containerPort: 8080/n        livenessProbe:/n          httpGet:/n            path: / /n           port: 8080/n          initialDelaySeconds: 15/n          timeoutSeconds: 1/n          periodSeconds: 10/n        resources:/n          requests:/n            cpu: 200m'
     sh 'ls -l groovy1.yml'
     sh 'cat groovy1.yml'
