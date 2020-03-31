@@ -41,6 +41,60 @@ pipeline {
                 }
             }
         }
+	node {
+    writeFile file: 'groovy1.yml', text: "
+kind: Service
+apiVersion: v1
+metadata:
+  name: train-schedule-service
+  namespace: train-ns
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 31000
+  selector:
+    app: train-schedule
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: train-schedule-deployment
+  namespace: train-ns
+  labels:
+    app: train-schedule
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: train-schedule
+      track: stable
+  template:
+    metadata:
+      labels:
+        app: train-schedule
+        track: stable
+    spec:
+      containers:
+      - name: train-schedule
+        image: $DOCKER_IMAGE_NAME:$BUILD_NUMBER
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 15
+          timeoutSeconds: 1
+          periodSeconds: 10
+        resources:
+          requests:
+            cpu: 200m"
+    sh 'cat groovy1.yml'
+    }
         
         stage('DeployToProduction') {
             when {
@@ -50,7 +104,7 @@ pipeline {
                 milestone(1)
                 kubernetesDeploy(
 		    kubeconfigId: 'kubeconfig',
-                    configs: 'train-schedule-kube.yml',
+                    configs: 'groovy1.yml',
                     enableConfigSubstitution: true
                 )
             }
