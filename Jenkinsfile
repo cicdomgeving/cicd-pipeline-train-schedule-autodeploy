@@ -44,6 +44,7 @@ pipeline {
 	stage('CreateFile') {
 	    steps {
                 script {
+		  import java.io.File
                   File piet = new File("test.yml")
                   piet.write "First line\n"
 	          piet << "Second line\n"
