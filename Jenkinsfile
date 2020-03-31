@@ -41,16 +41,6 @@ pipeline {
                 }
             }
         }
-	stage('CreateFile') {
-	    steps {
-                script {
-		def data = "kind: Service\napiVersion: v1\nmetadata:\n  name: ssh\n  namespace: train-ns\nspec:\n  type: NodePort\n  ports:\n    - port: 2022\n      targetPort: 22\n      nodePort: 32222\n  selector:\n    run: ssh\n\n\n---\n\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: ssh-deployment\n  namespace: train-ns\n  labels:\n    run: ssh\nspec:\n  replicas: 1\n  selector:\n    matchLabels:\n      run: ssh\n      track: stable\n  template:\n    metadata:\n      labels:\n        run: ssh\n        track: stable\n    spec:\n      containers:\n      - name: ssh\n        image: mauritscasper/ubuntu-ssh:part1\n        ports:\n        - containerPort: 22"
-    		writeFile(file: 'groovy1.yml', text: data)
-    		sh 'ls -l groovy1.yml'
-    		sh 'cat groovy1.yml'
-		}
-	     }
-       }
         
         stage('DeployToProduction') {
             when {
@@ -60,7 +50,7 @@ pipeline {
                 milestone(1)
                 kubernetesDeploy(
 		    kubeconfigId: 'kubeconfig',
-                    configs: 'groovy1.yml',
+                    configs: 'train-schedule-kube.yml',
                     enableConfigSubstitution: true
                 )
             }
