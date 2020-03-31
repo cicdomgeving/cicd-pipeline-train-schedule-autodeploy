@@ -42,8 +42,7 @@ pipeline {
             }
         }
 	node {
-    writeFile file: 'groovy1.yml', text: "
-kind: Service
+    writeFile file: 'groovy1.txt', text: 'kind: Service
 apiVersion: v1
 metadata:
   name: train-schedule-service
@@ -92,9 +91,10 @@ spec:
           periodSeconds: 10
         resources:
           requests:
-            cpu: 200m"
-    sh 'cat groovy1.yml'
-    }
+            cpu: 200m'
+    sh 'ls -l groovy1.txt'
+    sh 'cat groovy1.txt'
+}
         
         stage('DeployToProduction') {
             when {
