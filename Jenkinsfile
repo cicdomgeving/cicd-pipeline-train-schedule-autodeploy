@@ -44,11 +44,10 @@ pipeline {
 	stage('CreateFile') {
 	    steps {
                 script {
-		  import java.io.File
-                  File piet = new File("test.yml")
-                  piet.write "First line\n"
-	          piet << "Second line\n"
-		  println piet.text
+    		writeFile test: 'groovy1.txt', text: 'Working with files the Groovy way is easy.'
+		test << "PLUSSERRRRR"
+    		sh 'ls -l groovy1.txt'
+    		sh 'cat groovy1.txt'
 		}
 	     }
        }
